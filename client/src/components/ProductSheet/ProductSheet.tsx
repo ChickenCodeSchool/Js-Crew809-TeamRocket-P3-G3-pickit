@@ -151,16 +151,14 @@ export default function ProductSheet() {
           </div>
         </div>
         <div className="tiny-img">
-          <img
-            src={BASE_URL + announce.all_images[currentImage]}
-            alt="Files"
-            className="product-image"
-          />
-          <img
-            src={BASE_URL + announce.all_images[currentImage]}
-            alt="Files"
-            className="product-image"
-          />
+          {announce.all_images.map((image) => (
+            <img
+              key={image}
+              src={BASE_URL + image}
+              alt="Files"
+              className="product-image"
+            />
+          ))}
         </div>
         <div className="description">
           <p className={announce.description.length > 300 ? "long-text" : ""}>
