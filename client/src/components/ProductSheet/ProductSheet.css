@@ -1,8 +1,47 @@
+/* --- CONFIGURATION DES THÈMES --- */
+:root {
+  /* Couleurs Mode Clair */
+  --bg-page: #ffffff;
+  --text-main: #000000;
+  --text-value: #111827;
+  --text-label: #6b7280;
+  --border-subtle: #787878;
+  --border-accent: #bef264;
+  --img-fallback: #e5e7eb;
+  --btn-secondary-bg: #ffffff;
+  --btn-secondary-border: #9ca3af;
+  --btn-secondary-text: #374151;
+  --btn-main-bg: #bef264;
+  --btn-main-hover: #a3e635;
+  --btn-main-text: #1f2937;
+}
+
+[data-theme='dark'] {
+  /* Couleurs Mode Sombre */
+  --bg-page: #121212;
+  --text-main: #ffffff;
+  --text-value: #f3f4f6;
+  --text-label: #9ca3af;
+  --border-subtle: #404040;
+  --border-accent: #a3e635;
+  --img-fallback: #1f2937;
+  --btn-secondary-bg: #262626;
+  --btn-secondary-border: #4b5563;
+  --btn-secondary-text: #e5e7eb;
+  --btn-main-bg: #a3e635;
+  --btn-main-hover: #bef264;
+  --btn-main-text: #1f2937;
+}
+
+/* --- STYLES DU COMPOSANT --- */
+
 .product-sheet {
   min-height: 100vh;
-  background-color: white;
+  background-color: var(--bg-page);
+  color: var(--text-main);
   padding: 2rem;
   margin-top: 5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .product-container {
@@ -34,14 +73,15 @@
   height: 20%;
   border-radius: 0.5rem;
   gap: 20px;
-  border: 1px solid #787878;
+  border: 1px solid var(--border-subtle);
+  background-color: var(--img-fallback);
 }
 
 .product-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background-color: #e5e7eb;
+  background-color: var(--img-fallback);
 }
 
 .nav-arrow {
@@ -52,7 +92,12 @@
   padding: 0.5rem;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s;
+  color: var(--text-main); /* Flèches adaptatives */
+  transition: opacity 0.2s;
+}
+
+.nav-arrow:hover {
+  opacity: 0.7;
 }
 
 .nav-arrow-left {
@@ -83,7 +128,7 @@
   font-size: 2.2rem;
   font-weight: 900;
   margin-bottom: 1.5rem;
-  color: #000;
+  color: var(--text-main);
   text-transform: uppercase;
   line-height: 1;
 }
@@ -105,23 +150,23 @@
 }
 
 .btn-delete {
-  border: 1px solid #9ca3af;
-  background-color: white;
-  color: #374151;
+  border: 1px solid var(--btn-secondary-border);
+  background-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
 }
 
 .btn-delete:hover {
-  background-color: #f9fafb;
+  filter: brightness(1.1);
 }
 
 .btn-modify {
   border: none;
-  background-color: #bef264;
-  color: #1f2937;
+  background-color: var(--btn-main-bg);
+  color: var(--btn-main-text);
 }
 
 .btn-modify:hover {
-  background-color: #a3e635;
+  background-color: var(--btn-main-hover);
 }
 
 .btn-contact {
@@ -131,8 +176,8 @@
   padding: 0.6rem 5.6rem;
   font-size: 0.875rem;
   border: none;
-  background-color: #bef264;
-  color: #1f2937;
+  background-color: var(--btn-main-bg);
+  color: var(--btn-main-text);
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
@@ -140,7 +185,7 @@
 }
 
 .btn-contact:hover {
-  background-color: #a3e635;
+  background-color: var(--btn-main-hover);
 }
 
 .info-fields {
@@ -156,20 +201,20 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  border-bottom: 2px solid #bef264;
+  border-bottom: 2px solid var(--border-accent);
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
 }
 
 .info-label {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: var(--text-label);
   margin-bottom: 0.25rem;
 }
 
 .info-value {
   font-weight: 600;
-  color: #111827;
+  color: var(--text-value);
 }
 
 .favourites {
@@ -187,19 +232,12 @@
 
 .description {
   font-size: 0.875rem;
-  color: black;
+  color: var(--text-main);
   display: block;
   margin-top: 3rem;
 }
 
-.description-paragraph {
-  margin-bottom: 0.5rem;
-}
-
-.description-paragraph:last-child {
-  margin-bottom: 0;
-}
-
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
   .product-content {
     flex-direction: column;
@@ -211,10 +249,12 @@
   }
 
   .nav-arrow-left {
-    transform: translate(-120%, -50%);
+    left: 1rem; /* On ramène les flèches à l'intérieur sur mobile */
+    transform: translateY(-50%);
   }
 
   .nav-arrow-right {
-    transform: translate(120%, -50%);
+    right: 1rem;
+    transform: translateY(-50%);
   }
 }
