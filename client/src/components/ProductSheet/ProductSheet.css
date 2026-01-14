@@ -16,7 +16,7 @@
   --btn-main-text: #1f2937;
 }
 
-[data-theme='dark'] {
+[data-theme="dark"] {
   /* Couleurs Mode Sombre */
   --bg-page: #121212;
   --text-main: #ffffff;
