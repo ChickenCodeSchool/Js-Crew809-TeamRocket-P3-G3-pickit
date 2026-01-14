@@ -18,6 +18,10 @@ interface Announce {
   amount_deposit: number;
   state_of_product: string;
   name: string;
+  total_likes: number;
+  lastname: string;
+  firstname: string;
+  zipcode: number;
 }
 
 export default function ProductSheet() {
@@ -103,7 +107,9 @@ export default function ProductSheet() {
             <div className="info-fields">
               <div className="info-field">
                 <p className="info-label">Location</p>
-                <p className="info-value">{announce.location}</p>
+                <p className="info-value">
+                  {announce.zipcode} {announce.location}
+                </p>
               </div>
 
               <div className="info-field">
@@ -125,13 +131,15 @@ export default function ProductSheet() {
 
               <div className="info-field">
                 <p className="info-label">Posted by</p>
-                <p className="info-value">{announce.name}</p>
+                <p className="info-value">
+                  {announce.firstname} {announce.lastname}
+                </p>
               </div>
 
               <div className="info-field">
                 <p className="info-label">Favourites</p>
                 <div className="favourites">
-                  <span className="info-value">12</span>
+                  <span className="info-value">{announce.total_likes}</span>
                   <Heart className="heart-icon" />
                 </div>
               </div>
