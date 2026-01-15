@@ -98,7 +98,7 @@ body {
 button {
   cursor: pointer;
 }
-button:focus-visible {
+button:focus-visible, a:focus-visible {
   outline: solid 2px var(--color-btn) !important;
   border: solid 1px var(--color-btn) !important;
 }
