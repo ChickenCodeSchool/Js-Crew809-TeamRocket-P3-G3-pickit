@@ -53,6 +53,11 @@ router.get(
   userAction.readProfileById,
 );
 
+// define report routes
+import reportActions from "./modules/report/reportActions";
+
+router.post("/api/reports", reportActions.report);
+
 /* ************************************************************************* */
 
 export default router;

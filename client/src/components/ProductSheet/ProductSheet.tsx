@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import "./ProductSheet.css";
 import EditAnnonce from "../EditAnnonce/EditAnnonce";
+// import type { AnnounceDetail } from "../../types/Announce";
+import ReportAnnounces from "../btn-Report/ReportAnnounces";
 
 interface Announce {
   id: number;
@@ -87,7 +89,7 @@ export default function ProductSheet() {
               </button>
             </div>
           </div>
-
+          <ReportAnnounces targetType="annonce" data={{ id: 1 }} />
           <div className="info-section">
             <h1 className="product-title">{announce.title}</h1>
 

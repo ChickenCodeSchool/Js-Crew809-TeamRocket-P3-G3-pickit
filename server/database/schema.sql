@@ -189,6 +189,7 @@ CREATE TABLE IF NOT EXISTS messages (
 CREATE TABLE IF NOT EXISTS reports (
     id INT AUTO_INCREMENT PRIMARY KEY,
     reporter_id INT NOT NULL COMMENT 'User reporting',
+    cause VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
     creation_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     status ENUM('pending', 'in_progress', 'resolved', 'rejected') DEFAULT 'pending',
@@ -208,6 +209,7 @@ CREATE TABLE IF NOT EXISTS reports (
     
     INDEX idx_reporter (reporter_id),
     INDEX idx_status (status),
+    INDEX idx_cause (cause),
     INDEX idx_date (creation_date)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -344,8 +346,8 @@ INSERT IGNORE INTO messages (id, subject, message, user_id, announce_id, status)
 (2, 'Board Availability', 'Hi, is it possible to rent the board for next weekend?', 1, 2, 'read');
 
 -- Reports (1 report)
-INSERT IGNORE INTO reports (id, reporter_id, description, status, reported_announce_id) VALUES
-(1, 2, 'This listing contains misleading information about the equipment condition.', 'pending', 1);
+INSERT IGNORE INTO reports (id, reporter_id, cause, description, status, reported_announce_id) VALUES
+(1, 2, 'insulting to me','This listing contains misleading information about the equipment condition.', 'pending', 1);
 
 -- User Ban (1 ban)
 INSERT IGNORE INTO user_ban (id, user_id, superuser_id, reason, end_date, active) VALUES
