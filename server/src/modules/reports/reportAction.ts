@@ -36,7 +36,7 @@ const report: RequestHandler = async (req, res, next) => {
 const browse: RequestHandler = async (_req, res, next) => {
   try {
     const reports = await reportRepository.readAll();
-    res.status(200).json(reports);
+    res.status(200).json({ reports });
   } catch (err) {
     next(err);
   }
